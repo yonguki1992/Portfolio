@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 적용할 경로 목록 -->
+	<mapping path="/*" decorator="/resources/sitemesh/decorator.html" />
+	<!-- 무시할 경로 목록 -->
+	<mapping path="/member/*" exclue="true" />
+	<mapping path="/resources/*" exclue="true" />
+</sitemesh>

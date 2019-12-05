@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+<title><sitemesh:write property='title' /></title>
+<style type='text/css'>
+
+/* reset */
+/* 여백 초기화 */
+body, div, ul, li, dl, dd, dt, ol, h1, h2, h3, h4, h5, h6, input,
+	fieldset, legend, p, select, table, th, td, tr, textarea, button, form,
+	figure, figcaption {
+	margin: 0;
+	padding: 0;
+}
+
+/* a 링크 초기화 
+a {
+	color: #222;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #2698cb;
+}
+*/
+/* 폰트 초기화 */
+body, input, textarea, select, button, table {
+	font-family: 'Nanum Gothic', AppleSDGothicNeo-Regular, 'Malgun Gothic',
+		'맑은 고딕', dotum, '돋움', sans-serif;
+	color: #222;
+	font-size: 17px;
+	line-height: 1.5;
+}
+
+/* style */
+/* 레이아웃 */
+#header {
+	/*background: url(img/header_bg.jpg) repeat-x center top;*/
+	
+}
+
+#nav {
+	
+}
+
+#title {
+	margin: auto;
+}
+
+#subtitle {
+	width: 15%;
+	padding: 10px; 
+	border: 1px solid #555555;
+	text-align: center; 
+}
+#contents{
+	
+}
+
+#footer {
+	
+}
+
+/* 컨테이너 */
+.container {
+	position: relative;
+	width: auto;
+	height: 200px;
+	margin: 0 auto;
+	background: rgba(0, 0, 0, 0.3)
+}
+
+/* 헤더 */
+.header {
+	height: 327px;
+}
+
+.header .header_menu {
+	text-align: right;
+}
+
+.header .header_menu a {
+	color: #fff;
+	padding: 8px 0 6px 10px;
+	display: inline-block;
+	transition: color 0.3s ease;
+	font-family: 'Abel', sans-serif;
+}
+.header .header_menu img {
+	cursor: pointer;
+}
+.header .header_menu a:hover {
+	color: #ccc;
+}
+
+.disclaimer {
+	text-align: center;
+	border-top: 1px solid #cccccc; 
+	margin-top: 40px;
+	color: #666666;
+	font-size: smaller;
+}
+.mainBody {
+	width: 15%;
+	padding: 10px; 
+	border: 1px solid #555555;
+	text-align: center; 
+}
+/* mediaquery */
+/* 화면 너비 0~1220px */
+@media ( max-width : 1220px) {
+	.container {
+		width: 100%;
+	}
+	.row {
+		padding: 0 15px;
+	}
+}
+</style>
+	<sitemesh:write property='head' />
+</head>
+<body>
+	<header id="header">
+		<div class="container">
+			<div class="row">
+				<div class="header">
+					<div class="header_menu">
+						<img alt="공지사항"	src="https://via.placeholder.com/128x45.png?text=Notice" onclick="location.href='?'"> 
+						<img alt="자유게시판" src="https://via.placeholder.com/128x45.png?text=Freeboard" onclick="location.href='?'">
+						<img alt="자료실" src="https://via.placeholder.com/128x45.png?text=Fileboard" onclick="location.href='?'">
+						<img alt="투표게시판" src="https://via.placeholder.com/128x45.png?text=Poll" onclick="location.href='?'">
+						<img alt="방명록" src="https://via.placeholder.com/128x45.png?text=Guestbook" onclick="location.href='?'">
+					</div>
+					<!-- //header_menu -->
+				</div>
+			</div>
+		</div>
+
+	</header>
+	<div class='title'>
+		<h1 align="center" style="border: 1px solid #555555;">
+			<sitemesh:write property='title'/>
+		</h1>
+	</div>
+	<div  class='title'>
+	    <div class='mainBody'>
+			<sitemesh:write property='body'/>
+	    </div>
+    </div>
+    
+    
+	<section id="subtitle">
+<!--	    <article>
+	        <h2>서브 타이틀</h2>
+	    </article>
+	    <h2>사이트 컨텐츠</h2>-->
+	    <section>
+	        <h2>공지사항</h2>
+	        <article><h4>공지사항</h4></article>
+	        <article><h4>컨텐츠2</h4></article>
+	        <article><h4>컨텐츠3</h4></article>
+	    </section>
+	    <section>
+	        <h2>자유게시판</h2>
+	        <article><h4>인기글</h4></article>
+	        <article><h4>자유게시판</h4></article>
+	    </section>
+	    <section>
+	        <h2>자료실</h2>
+	        <article><h4>인기자료</h4></article>
+	        <article><h4>자료게시판</h4></article>
+	    </section>
+		<section>
+	        <h2>설문게시판</h2>
+	        <article><h4>인기설문</h4></article>
+	        <article><h4>종료된 설문</h4></article>
+	        <article><h4>진행중인 설문</h4></article>
+	    </section>
+		<section>
+	        <h2>방명록</h2>
+	    </section>
+    </section>
+    
+    
+    
+    <footer id="footer">
+    	<div class='disclaimer'>
+    		<strong>디지털컨버전스(JAVA기반 개발자)양성훈련 과정 결과물.</strong><br />
+    		H.P : 010-5163-0630 | Mail : yonguki1992@gmail.com | 제작 : 김용욱   		
+    	</div>
+    </footer>
+</body>
+</html>
