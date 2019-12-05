@@ -32,7 +32,7 @@ public class WriteBoardService {
 		return writeBoardDAO.selectBoardList(); 
 	}
 		
-	// 특정 게시판의 전체 갯수 가져오기
+	// 특정 게시판의 전체 게시글 갯수 가져오기
 	public int selectWriteBoardGetCount(String boTable) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("bo_table", boTable);
@@ -41,7 +41,9 @@ public class WriteBoardService {
 	}
 	
 	//특정 게시판의 한 페이지 가져오기
-	public Paging<WriteBoardVO> selectWriteBoardGetList(String boTable, int totalCount, int currentPage, int pageSize, int blockSize){
+	public Paging<WriteBoardVO> selectWriteBoardGetList(String boTable, int currentPage, int pageSize, int blockSize){
+		int totalCount = selectWriteBoardGetCount(boTable);
+		
 		Paging<WriteBoardVO> paging = new Paging<WriteBoardVO>(totalCount, currentPage, pageSize, blockSize);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -55,18 +57,20 @@ public class WriteBoardService {
 		return paging;
 		
 	}
-	public Paging<WriteBoardVO> selectWriteBoardGetList(String boTable,int totalCount, CommonVO commVO){
-		return selectWriteBoardGetList(boTable, totalCount, commVO.getCurrentPage(), commVO.getPageSize(), commVO.getBlockSize());
+	public Paging<WriteBoardVO> selectWriteBoardGetList(String boTable, CommonVO commVO){
+		return selectWriteBoardGetList(boTable, commVO.getCurrentPage(), commVO.getPageSize(), commVO.getBlockSize());
 	}
 	
-	// 전체 게시판의 갯수
+	// 전체 게시판의 게시글 갯수
 	public int selectAllWriteBoardGetCount() {
 		return writeBoardDAO.selectAllWriteBoardGetCount();
 	}
 	
 	
 	// 모든 게시판에서 한 페이지 가져오기
-	public Paging<WriteBoardVO> selectAllWriteBoardList(int totalCount, int currentPage, int pageSize, int blockSize){
+	public Paging<WriteBoardVO> selectAllWriteBoardList(int currentPage, int pageSize, int blockSize){
+		int totalCount = selectAllWriteBoardGetCount();
+		
 		Paging<WriteBoardVO> paging = new Paging<WriteBoardVO>(totalCount, currentPage, pageSize, blockSize);
 		List<BoardVO> boardList = selectBoardList();
 		
@@ -81,8 +85,8 @@ public class WriteBoardService {
 		return paging;
 		
 	}
-	public Paging<WriteBoardVO> selectAllWriteBoardList(int totalCount, CommonVO commVO){
-		return selectAllWriteBoardList(totalCount, commVO.getCurrentPage(), commVO.getPageSize(), commVO.getBlockSize());
+	public Paging<WriteBoardVO> selectAllWriteBoardList(CommonVO commVO){
+		return selectAllWriteBoardList(commVO.getCurrentPage(), commVO.getPageSize(), commVO.getBlockSize());
 	}
 	
 	//글 작성하는 쿼리

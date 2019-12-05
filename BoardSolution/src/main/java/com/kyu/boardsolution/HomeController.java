@@ -9,11 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kyu.boardsolution.service.TestService;
 import com.kyu.boardsolution.service.WriteBoardService;
+import com.kyu.boardsolution.vo.write.CommonVO;
+import com.kyu.boardsolution.vo.write.Paging;
+import com.kyu.boardsolution.vo.write.WriteBoardVO;
 
 /**
  * Handles requests for the application home page.
@@ -32,7 +37,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(@ModelAttribute CommonVO commVO, Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -46,7 +51,11 @@ public class HomeController {
 		model.addAttribute("sum", testService.getSum(20, 30, 40) );
 		model.addAttribute("count", testService.selectWriteBoardCount("write_notice"));
 		model.addAttribute("boards", writeBoardService.selectBoardList());
-//		model.addAttribute("lists", writeBoardService.selectAllWriteBoardList(1,5));
+		
+		Paging<WriteBoardVO> allPaging = writeBoardService.selectAllWriteBoardList(commVO);
+		Paging<WriteBoardVO> paging = writeBoardService.selectWriteBoardGetList("write_freeboard", commVO);
+		model.addAttribute("allPaging", allPaging);
+		model.addAttribute("paging", paging);
 
 		
 		return "home";
