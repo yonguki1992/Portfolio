@@ -56,8 +56,8 @@ public class HomeController {
 		Paging<WriteBoardVO> paging = writeBoardService.selectWriteBoardGetList("write_freeboard", commVO);
 		model.addAttribute("allPaging", allPaging);
 		model.addAttribute("paging", paging);
-
-		
+			
+		//테스트
 		return "home";
 	}
 	
